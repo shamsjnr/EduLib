@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %} Library Home {% endblock %}</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wdth,wght@87.5,100..900&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Noto Sans", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 500;
+      font-style: normal;
+      color: #38383a;
+      background: url({% static 'images/background.jpg' %});
+      background-size: cover;
+    }
+    #wrapper {
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(255, 255, 255, .86);
+      backdrop-filter: blur(2px);
+    }
+    .alert {
+      color: rgb(0, 58, 0);
+      background-color: rgb(211, 255, 211);
+      text-align: center;
+    }
+    h1 {
+      padding: 24px;
+      font-size: 3rem;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid chocolate;
+      border-width: 1px 0;
+      margin-bottom: 24px;
+    }
+    #wrapper > div {
+      padding: 12px 24px;
+    }
+    .btn {
+      text-decoration: none;
+      color: white;
+      background-color: chocolate;
+      padding: 12px 24px;
+      transition: all .2s ease;
+      display: inline-flex;
+    }
+    .btn:hover {
+      background-color: rgb(180, 84, 15);
+      box-shadow: 0 3px 15px -5px #999;
+    }
+    table {
+      width: 100%;
+      background-color: white;
+    }
+    table tr {
+      border-bottom: 1px solid #f2f2f2;
+    }
+    table tr:hover {
+      background-color: #f2f2f2;
+    }
+    table tr th {
+      background-color: rgb(255, 192, 147);
+      padding: 8px 12px;
+    }
+    table tr td {
+      padding: 8px 12px;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+    table .btn {
+      margin: 0 2px;
+      font-size: .9em;
+      padding: 8px 16px;
+    }
+    .center {
+      text-align: center;
+    }
+    .right {
+      text-align: right;
+    }
+    .delete {
+      background-color: rgb(255, 30, 0);
+    }
+    .delete:hover {
+      background-color: rgb(228, 38, 13);
+    }
+  </style>
+  {% block styles %}
+  {% endblock %}
+</head>
+<body>
+<div id="wrapper">
+  <a href="{% url 'home' %}"><h1>Edu<span style="color: chocolate;">Lib</span>!</h1></a>
+  {% block cotent %}
+  {% endblock %}
+</div>
+</body>
+</html>

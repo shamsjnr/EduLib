@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block title %} Books - MyLibrary {% endblock %}
+{% block cotent %}
+  <div class="banner">
+    <h2>List of Books</h2>
+    <a class="btn" href="{% url 'addBook' %}">Add new</a>
+  </div>
+  {% if messages %}
+  <div class="alert">
+    {% for message in messages %}
+      {{ message }}
+    {% endfor %}
+</div>
+  {% endif %}
+  <div>
+    <table>
+      <thead>
+        <th width="40px">SN</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Published</th>
+        <th>Status</th>
+        <th width="120px">options</th>
+      </thead>
+      <tbody>
+        {% for book in books %}
+        <tr>
+          <td class="right">{{ forloop.counter }}</td>
+          <td>{{ book.title }}</td>
+          <td>{{ book.author }}</td>
+          <td class="center">{{ book.publish_date }}</td>
+          <td class="center {{ book.availability|yesno:'green,red' }}">{{ book.availability|yesno:"Available,unavailable" }}</td>
+          <td class="center">
+            <a class="btn" href="{% url 'updateBook' book.id %}">Edit</a>
+            <a class="btn delete" href="{% url 'deleteBook' book.id %}">Delete</a>
+          </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="6" class="center">No data</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
+{% block styles %}
+<style>
+  .green {
+    color: rgb(1, 170, 1);
+    font-weight: 600;
+  }
+  .red {
+    color: red;
+    font-style: italic;
+  }
+</style>
+{% endblock %}
